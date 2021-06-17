@@ -1,12 +1,13 @@
 package com.payroll.data.model;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-public class Employee {
+public class Employee extends RepresentationModel<Employee> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
