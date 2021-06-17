@@ -32,7 +32,17 @@ public class EmployeeController {
     public ResponseEntity<?>findAll(){
         List<Employee>employees=  employeeService.findAll()
                 .stream()
-                .map(employee -> employee.add(linkTo(methodOn(EmployeeController.class)).withSelfRel())).collect(Collectors.toList());
+                .map(employee -> {
+                    try {
+                        return employee.add(
+                                linkTo(methodOn(EmployeeController.class).findById(employee.getId())).withSelfRel(),
+                                linkTo(methodOn(EmployeeController.class).findAll()).withSelfRel());
+                    } catch (IdCannotBeNullException | EmployeeNotFoundException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+
+                }).collect(Collectors.toList());
         return ResponseEntity.ok(employees);
     }
     @PostMapping()
