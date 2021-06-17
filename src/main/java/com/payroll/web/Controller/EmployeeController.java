@@ -34,8 +34,8 @@ public class EmployeeController {
     public void deleteById(@PathVariable("id") Integer id) throws IdCannotBeNullException, EmployeeNotFoundException {
         employeeService.deleteById(id);
     }
-    @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable("id")Integer id,@RequestBody EmployeeDto employeeDto){
+    @PatchMapping("/{id}")
+    public Employee updateEmployee(@PathVariable("id")Integer id,@RequestBody EmployeeDto employeeDto) throws EmployeeNotFoundException {
         return employeeService.updateEmployee(id,employeeDto);
     }
 
