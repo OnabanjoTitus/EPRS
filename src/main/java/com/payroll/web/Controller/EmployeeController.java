@@ -9,6 +9,7 @@ import com.payroll.web.Exceptions.IdCannotBeNullException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,8 +43,15 @@ public class EmployeeController {
     }
     @GetMapping("/{id}")
     public  ResponseEntity<?> findById(@PathVariable("id") Integer id) throws IdCannotBeNullException, EmployeeNotFoundException {
-        employeeService.findById(id);
-        return null;
+
+        Employee employee= employeeService.findById(id);;
+        EntityModel<Employee>employeeEntityModel=EntityModel.of(
+                employee,linkTo(methodOn(EmployeeController.class)
+                        .findById(employee.getId())).
+                        withSelfRel(),linkTo(methodOn(EmployeeController.class).
+                        findAll()).withRel("employees"));
+        return new ResponseEntity<>(employeeEntityModel, HttpStatus.OK);
+
     }
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Integer id) throws IdCannotBeNullException, EmployeeNotFoundException {
