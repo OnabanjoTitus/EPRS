@@ -30,14 +30,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeMapper employeeMapper;
 
     @Override
-    public Employee save(EmployeeDto employeedto) throws EmployeeCannotBeNullException {
-        if(employeedto==null){
+    public Employee save(EmployeeDto employeeDto) throws EmployeeCannotBeNullException {
+        if(employeeDto==null){
 
             throw new EmployeeCannotBeNullException("Employee cannot be empty");
         }
         Employee employee= new Employee();
-//        modelMapper.map(employeedto,employee);
-
+        employeeMapper.updateEmployeeFromDto(employeeDto,employee);
         log.info("Employee after mapping is -->{}",employee);
         return employeeRepository.save(employee);
     }
