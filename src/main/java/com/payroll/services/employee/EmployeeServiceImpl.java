@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new EmployeeCannotBeNullException("Employee cannot be empty");
         }
         Employee employee= new Employee();
-        modelMapper.map(employeedto,employee);
+//        modelMapper.map(employeedto,employee);
 
         log.info("Employee after mapping is -->{}",employee);
         return employeeRepository.save(employee);

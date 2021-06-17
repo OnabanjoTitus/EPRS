@@ -31,7 +31,7 @@ class EmployeeRepositoryTest {
         log.info("Employee before save -->{}",employee);
         employee.setFirstName("JohnXavier");
         employeeRepository.save(employee);
-        assertThat(employee.getFirstName()).isEqualTo("JohnXavier");
+        assertThat(employee.getFirstName()).isEqualTo("John");
         assertThat(employee.getLastName()).isEqualTo("Dan");
         assertThat(employee.getRole()).isEqualTo("HR");
         log.info("Employee after save -->{}",employee);
