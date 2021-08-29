@@ -5,8 +5,6 @@ import com.payroll.data.model.EmployeeDto;
 import com.payroll.web.Exceptions.EmployeeCannotBeNullException;
 import com.payroll.web.Exceptions.EmployeeNotFoundException;
 import com.payroll.web.Exceptions.IdCannotBeNullException;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

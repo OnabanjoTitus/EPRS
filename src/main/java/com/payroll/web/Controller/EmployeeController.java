@@ -8,7 +8,6 @@ import com.payroll.web.Exceptions.EmployeeNotFoundException;
 import com.payroll.web.Exceptions.IdCannotBeNullException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.HttpStatus;
@@ -21,6 +20,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Slf4j
 @RestController
 @RequestMapping("/employee")
