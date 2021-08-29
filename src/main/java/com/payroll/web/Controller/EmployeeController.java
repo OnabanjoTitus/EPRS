@@ -58,7 +58,7 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public  ResponseEntity<?> findById(@PathVariable("id") Integer id) throws IdCannotBeNullException, EmployeeNotFoundException {
 
-        Employee employee= employeeService.findById(id);;
+        Employee employee= employeeService.findById(id);
         EntityModel<Employee>employeeEntityModel=EntityModel.of(
                 employee,linkTo(methodOn(EmployeeController.class)
                         .findById(employee.getId())).
